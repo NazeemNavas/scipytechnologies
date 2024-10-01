@@ -12,6 +12,7 @@
     justify-content: center;
     align-items: center; /* Centers the modal vertically and horizontally */
     overflow: hidden; /* Prevents overflow of content outside the viewport */
+    padding: 10px;
   }
   
   /* Modal content box */
@@ -85,7 +86,10 @@
     
     
   }
-  
+  #modalHead{
+    font-size: large;
+    color: #0092ff;
+  }
   /* Fade-in animation */
   @keyframes fadeIn {
     from {

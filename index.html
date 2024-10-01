@@ -130,7 +130,7 @@
       <div id="popupModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" id="closeModal">&times;</span>
-            <h3>Popup Form</h3>
+            <h3 id="modalHead">Know More</h3>
             <form id="popupForm" action="">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" placeholder="Enter your name" required>
@@ -1420,7 +1420,7 @@
   window.onload = function() {
       setTimeout(function() {
           document.getElementById('popupModal').style.display = 'flex';
-      }, 1000);
+      }, 5000);
   };
 
   // Function to close the modal

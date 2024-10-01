@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/projects.css" />
     <link rel="icon" href="../assets/Scipy Favicon.png" type="image/Favicon">
+    <link rel="stylesheet" href="../css/popup.css">
    
     
     
@@ -64,6 +65,29 @@
         
   </head>
   <body>
+    <div id="loadingSpinner" style="display:none;">Loading...</div>
+
+<!-- Ensure your form includes a submit button -->
+
+
+      <div id="popupModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h3 id="modalHead">Know More</h3>
+            <form id="popupForm" action="">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
     <div class="sidebar-closer"></div>
     <div class="ping"></div>
 
@@ -537,5 +561,63 @@
     <script src="owl.carousel.min.js"></script>
     <script src="odometer.js"></script>
     <script src="../js/about.js"></script>
+    <!-- script for popup form-->
+<script>
+  // Function to show the popup modal after 5 seconds
+  window.onload = function() {
+      setTimeout(function() {
+          document.getElementById('popupModal').style.display = 'flex';
+      }, 5000);
+  };
+
+  // Function to close the modal
+  document.getElementById('closeModal').onclick = function() {
+      document.getElementById('popupModal').style.display = 'none';
+  };
+
+  // Close modal when clicking outside of it
+  // window.onclick = function(event) {
+  //     var modal = document.getElementById('popupModal');
+  //     if (event.target == modal) {
+  //         modal.style.display = 'none';
+  //     }
+  // };
+</script>
+<!-- google sheet -->
+<script>
+  $("#popupForm").submit((e) => {
+      e.preventDefault();
+      
+      const submitButton = $("#popupForm").find("button[type='submit']");
+      submitButton.prop("disabled", true).text("Submitting..."); // Disable button and change text
+      
+      $("#loadingSpinner").show(); // Show loading spinner
+
+      $.ajax({
+          url: "https://script.google.com/macros/s/AKfycbzNF49RMEjhRBvDtcCDbumt9EN0wemqJVdceg0QPU5Aa9jVhN0J4FovFZKuNWPHSy6I/exec",
+          data: $("#popupForm").serialize(),
+          method: "post",
+          
+          success: function (response) {
+              // Hide the modal
+              document.getElementById("popupModal").style.display = "none";
+              // Reset the form
+              $("#popupForm")[0].reset();
+              // Re-enable the button and reset text
+              submitButton.prop("disabled", false).text("Submit");
+              $("#loadingSpinner").hide(); // Hide loading spinner
+
+              // Optionally redirect or show a success message
+              // window.location.href = "https://google.com";
+          },
+          error: function (err) {
+              alert("Something went wrong");
+              // Re-enable the button and reset text
+              submitButton.prop("disabled", false).text("Submit");
+              $("#loadingSpinner").hide(); // Hide loading spinner
+          }
+      });
+  });
+</script>
   </body>
 </html>
