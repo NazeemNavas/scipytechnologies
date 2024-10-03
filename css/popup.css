@@ -24,7 +24,7 @@
     max-width: 400px; 
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 0.3s ease; /* Fade in effect */
+    animation: fadeIn 0.3s ease-in-out; /* Fade in effect */
     max-height: 90vh; /* Prevent modal from exceeding the viewport height */
     overflow-y: auto; /* Enable scrolling within the modal if content exceeds max-height */
     position: relative; /* To position the close button within this container */
@@ -75,7 +75,7 @@
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color cubic-bezier(0.785, 0.135, 0.15, 0.86) ease-in-out;
     opacity: 75%;
   }
   
@@ -99,4 +99,5 @@
       opacity: 1;
     }
   }
+  
   

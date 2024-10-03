@@ -122,7 +122,7 @@
   <body>
       <!-- popup form -->
        <!-- Add this div for the loading spinner -->
-<div id="loadingSpinner" style="display:none;">Loading...</div>
+<!--  -->
 
 <!-- Ensure your form includes a submit button -->
 
@@ -150,6 +150,7 @@
     <div class="Gotohome">
       <a><i class="fa-solid fa-arrow-up"></i></a>
     </div>
+    
     <div class="ping"></div>
     <div class="whatsapp-btn">
       <a
@@ -265,6 +266,7 @@
                   <li>
                     <a id="About-us" class="active-link" href="#">About Us</a>
                   </li>
+                  
                   <li>
                     <a
                       id="Contact-us"
@@ -1418,9 +1420,14 @@
 <script>
   // Function to show the popup modal after 5 seconds
   window.onload = function() {
-      setTimeout(function() {
-          document.getElementById('popupModal').style.display = 'flex';
-      }, 5000);
+      // Check if the modal has already been shown in the current session
+      if (!sessionStorage.getItem('modalShown')) {
+          setTimeout(function() {
+              document.getElementById('popupModal').style.display = 'flex';
+              // Store a flag in sessionStorage to prevent it from showing again during this session
+              sessionStorage.setItem('modalShown', 'true');
+          }, 5000);
+      }
   };
 
   // Function to close the modal
@@ -1428,7 +1435,7 @@
       document.getElementById('popupModal').style.display = 'none';
   };
 
-  // Close modal when clicking outside of it
+  // Optional: Close modal when clicking outside of it
   // window.onclick = function(event) {
   //     var modal = document.getElementById('popupModal');
   //     if (event.target == modal) {
@@ -1436,6 +1443,8 @@
   //     }
   // };
 </script>
+
+
 <!-- google sheet -->
 <script>
   $("#popupForm").submit((e) => {
