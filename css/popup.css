@@ -67,7 +67,7 @@
     width: 100%;
   }
   
-  button[type="submit"] {
+  #popupbtn{
     background-color: #0092ff;
     color: white;
     padding: 10px;
@@ -79,7 +79,7 @@
     opacity: 75%;
   }
   
-  button[type="submit"]:hover {
+  #popupbtn:hover {
     background-color: #0092ff;
     opacity: 100%;
     
